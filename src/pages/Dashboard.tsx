@@ -375,7 +375,7 @@ export default function Dashboard() {
 
   return (
     <>
-      <style>{`
+      {/* <style>{`
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
         * { box-sizing: border-box; margin: 0; padding: 0; }
         body { font-family: 'Inter', sans-serif; background: #F7F8FA; }
@@ -386,12 +386,9 @@ export default function Dashboard() {
         ::-webkit-scrollbar { width: 6px; height: 6px; }
         ::-webkit-scrollbar-track { background: transparent; }
         ::-webkit-scrollbar-thumb { background: #DDD; border-radius: 99px; }
-      `}</style>
+      `}</style> */}
 
       <div style={{ display: "flex", minHeight: "100vh", fontFamily: "'Inter', sans-serif" }}>
-
-        {/* ── Sidebar ── */}
-        <Sidebar />
 
         {/* ── Main content (scrollable) ── */}
         <main style={{ flex: 1, overflowY: "auto", padding: "36px 32px 48px", minWidth: 0 }}>
