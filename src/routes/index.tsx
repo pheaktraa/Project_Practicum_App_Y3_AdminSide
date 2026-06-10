@@ -1,6 +1,7 @@
 import { Routes, Route, Navigate } from 'react-router-dom';
 import Login from '../pages/Login';
 import Dashboard from '../pages/Dashboard';
+import Deliveries from '../pages/Deliveries';
 import UserManagement from '../pages/UserManagement';
 import Sidebar from '../components/Sidebar';
 
@@ -35,6 +36,11 @@ const RootRouter = ({ isAuthenticated }: RootRouterProps) => {
       <Route 
         path="/dashboard" 
         element={isAuthenticated ? <ProtectedLayout><Dashboard /></ProtectedLayout> : <Navigate to="/login" />} 
+      />
+
+      <Route 
+        path="/deliveries" 
+        element={isAuthenticated ? <ProtectedLayout><Deliveries /></ProtectedLayout> : <Navigate to="/login" />} 
       />
 
       {/* Add more routes here as you build them */}
