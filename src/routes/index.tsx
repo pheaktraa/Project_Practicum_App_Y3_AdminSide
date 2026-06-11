@@ -4,6 +4,7 @@ import Dashboard from '../pages/Dashboard';
 import Deliveries from '../pages/Deliveries';
 import UserManagement from '../pages/UserManagement';
 import Sidebar from '../components/Sidebar';
+import Settings from '../pages/Settings';
 
 interface RootRouterProps {
   isAuthenticated: boolean;
@@ -41,6 +42,11 @@ const RootRouter = ({ isAuthenticated }: RootRouterProps) => {
       <Route 
         path="/deliveries" 
         element={isAuthenticated ? <ProtectedLayout><Deliveries /></ProtectedLayout> : <Navigate to="/login" />} 
+      />
+
+      <Route 
+        path="/settings" 
+        element={isAuthenticated ? <ProtectedLayout><Settings /></ProtectedLayout> : <Navigate to="/login" />} 
       />
 
       {/* Add more routes here as you build them */}
