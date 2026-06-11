@@ -2,71 +2,15 @@ import { useEffect, useState } from 'react';
 import { collection, getDocs } from 'firebase/firestore';
 import { db } from '../firebase';
 import { Users, UserCheck, AlertCircle } from 'lucide-react';
-
-interface User {
-  id: string;
-  fullname: string;
-  email: string;
-  phone_number:  string;
-  roles: string;
-  photoURL: string;
-}
+import { useGetAllUsers } from '../store/authStore';
 
 export default function UserManagement() {
-  const [customers, setCustomers] = useState<User[]>([]);
-  const [drivers, setDrivers] = useState<User[]>([]);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState<string | null>(null);
+  const { customers, drivers, loading, error, fetch } = useGetAllUsers();
   const [activeTab, setActiveTab] = useState<'customers' | 'drivers'>('customers');
 
-  useEffect(() => {
-  const fetchUsers = async () => {
-    try {
-      setLoading(true);
-      setError(null);
-
-      // Fetch from 'users' collection
-      const usersCollection = collection(db, 'users'); 
-      const usersSnapshot = await getDocs(usersCollection);
-      
-      const usersData = usersSnapshot.docs.map(doc => {
-        const data = doc.data();
-        return { id: doc.id, ...data } as User;
-      });
-      
-      // Fetch from 'transporter' collection
-      const transportersCollection = collection(db, 'transporter');
-      const transportersSnapshot = await getDocs(transportersCollection);
-      
-      const transporterData = transportersSnapshot.docs.map(doc => {
-        const data = doc.data();
-        return { id: doc.id, ...data } as User;
-      });
-
-      // Combine both collections
-      const allUsers = [...usersData, ...transporterData];
-
-      // Separate users by role - with better logging
-      const customersData = allUsers.filter(user => 
-        user.roles === 'user' || user.roles?.toLowerCase() === 'user'
-      );
-      
-      const driversData = allUsers.filter(user => 
-        user.roles === 'transporter' || user.roles?.toLowerCase() === 'transporter'
-      );
-      
-      setCustomers(customersData);
-      setDrivers(driversData);
-    } catch (err) {
-      console.error('Error fetching users:', err);
-      setError(`Failed to fetch users: ${err instanceof Error ? err.message : 'Unknown error'}`);
-    } finally {
-      setLoading(false);
-    }
-  };
-
-  fetchUsers();
-}, []);
+   useEffect(() => {
+    fetch();
+  }, [fetch]);
 
   const currentUsers = activeTab === 'customers' ? customers : drivers;
 
