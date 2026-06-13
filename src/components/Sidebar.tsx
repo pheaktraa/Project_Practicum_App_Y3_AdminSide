@@ -6,7 +6,6 @@ import {
   Users,
   Truck,
   PackageSearch,
-  BarChart3,
   Settings,
   LogOut,
   Zap,
@@ -18,9 +17,9 @@ const BRAND = "#FF6B4A";
 const NAV_ITEMS = [
   { icon: LayoutDashboard, label: "Dashboard", path: "/dashboard" },
   { icon: Users,           label: "User Management", path: "/users" },
-  { icon: Truck,           label: "Transporters", path: "/transporters" },
+  { icon: Truck,           label: "Driver Performance", path: "/performance" },
   { icon: PackageSearch,   label: "Deliveries", path: "/deliveries" },
-  { icon: BarChart3,       label: "Analytics", path: "/analytics" },
+  // { icon: BarChart3,       label: "Analytics", path: "/analytics" },
   { icon: Settings,        label: "Settings", path: "/settings" },
 ];
 

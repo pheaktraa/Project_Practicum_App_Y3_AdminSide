@@ -23,16 +23,16 @@ function StatCard({
   icon: Icon,
   label,
   value,
-  trend,
-  trendLabel,
+  trend = "neutral",
+  trendLabel = "",
   loading,
   color,
 }: {
   icon: React.ElementType;
   label: string;
   value: string | number;
-  trend: "up" | "down" | "neutral";
-  trendLabel: string;
+  trend?: "up" | "down" | "neutral";
+  trendLabel?: string;
   loading: boolean;
   color: string;
 }) {

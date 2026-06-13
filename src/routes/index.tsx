@@ -5,6 +5,7 @@ import Deliveries from '../pages/Deliveries';
 import UserManagement from '../pages/UserManagement';
 import Sidebar from '../components/Sidebar';
 import Settings from '../pages/Settings';
+import DriverPerformance from '../pages/DriverPerformance';
 
 interface RootRouterProps {
   isAuthenticated: boolean;
@@ -53,6 +54,11 @@ const RootRouter = ({ isAuthenticated }: RootRouterProps) => {
       <Route 
         path="/users" 
         element={isAuthenticated ? <ProtectedLayout><UserManagement /></ProtectedLayout> : <Navigate to="/login" />} 
+      />
+
+      <Route 
+        path="/performance" 
+        element={isAuthenticated ? <ProtectedLayout><DriverPerformance /></ProtectedLayout> : <Navigate to="/login" />} 
       />
 
       {/* DEFAULT REDIRECT */}
