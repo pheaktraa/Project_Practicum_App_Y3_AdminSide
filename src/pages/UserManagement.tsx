@@ -1,6 +1,4 @@
 import { useEffect, useState } from 'react'; 
-import { collection, getDocs } from 'firebase/firestore';
-import { db } from '../firebase';
 import { Users, UserCheck, AlertCircle } from 'lucide-react';
 import { useGetAllUsers } from '../store/authStore';
 
